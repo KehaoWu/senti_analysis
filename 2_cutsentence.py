@@ -6,8 +6,8 @@ import jieba.analyse
 import codecs,sys,string,re
 # 文本分词
 def prepareData(sourceFile,targetFile):
-    f = codecs.open(sourceFile, 'r', encoding='utf-8')
-    target = codecs.open(targetFile, 'w', encoding='utf-8')
+    f = open(sourceFile, 'r')
+    target = open(targetFile, 'w')
     print 'open source file: '+ sourceFile
     print 'open target file: '+ targetFile
 
@@ -32,9 +32,10 @@ def clearTxt(line):
         outtab = ""
         trantab = string.maketrans(intab, outtab)
         pun_num = string.punctuation + string.digits
-        line = line.encode('utf-8')
+        #line = line.encode('utf-8')
         line = line.translate(trantab,pun_num)
-        line = line.decode("utf8")
+        print(line)
+        #line = line.decode("utf8")
         #去除文本中的英文和数字
         line = re.sub("[a-zA-Z0-9]","",line)
         #去除文本中的中文符号和英文符号
